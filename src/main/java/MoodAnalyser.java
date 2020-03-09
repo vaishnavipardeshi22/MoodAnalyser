@@ -14,17 +14,25 @@ public class MoodAnalyser
         this.message=message;
     }
 
-    public static void main(String[] args)
-    {
-        System.out.println("******************** WELCOME TO MOOD ANALYSER ********************");
-    }
-
     //METHOD TO ANALYZE MOOD
     public String analyseMood()
     {
-        if (message.contains("Sad"))
-            return "SAD";
-        else
-            return "HAPPY";
+        try
+        {
+            if (message.contains("Sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+        return "HAPPY";
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println("******************** WELCOME TO MOOD ANALYSER ********************");
     }
 }
