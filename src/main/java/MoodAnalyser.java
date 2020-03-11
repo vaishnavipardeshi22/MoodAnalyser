@@ -11,24 +11,32 @@ public class MoodAnalyser
     //PARAMETERISED CONSTRUCTOR
     public MoodAnalyser(String message)
     {
-        this.message=message;
+        this.message = message;
     }
 
-    //METHOD TO ANALYZE MOOD
-    public String analyseMood()
+    //PARAMETERISED METHOD TO ANALYSE MOOD
+    public String analyseMood(String message) throws MoodAnalysisException
+    {
+        this.message=message;
+        return analyseMood();
+    }
+
+    //METHOD TO ANALYSE MOOD
+    public String analyseMood() throws MoodAnalysisException
     {
         try
         {
+            if(message.length() == 0)
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY, "Please enter valid mood.");
             if (message.contains("Sad"))
                 return "SAD";
             else
                 return "HAPPY";
         }
-        catch (Exception e)
+        catch (NullPointerException e)
         {
-            e.getStackTrace();
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Please enter valid mood.");
         }
-        return "HAPPY";
     }
 
     public static void main(String[] args)
