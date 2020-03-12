@@ -1,4 +1,6 @@
-public class MoodAnalyser
+import java.util.Objects;
+
+public class MoodAnalyser<equals, equal>
 {
     private String message;
 
@@ -39,12 +41,13 @@ public class MoodAnalyser
         }
     }
 
-    //METHOD TO CHECK TWO OBJECTS ARE EQUAL OR NOT
-    public boolean equals(Object another)
+    @Override
+    public boolean equals(Object o)
     {
-        if (this.message.equals(((MoodAnalyser) another).message))
-            return true;
-        return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoodAnalyser that = (MoodAnalyser) o;
+        return Objects.equals(message, that.message);
     }
 
     //MAIN METHOD

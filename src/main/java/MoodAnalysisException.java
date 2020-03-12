@@ -2,7 +2,7 @@ public class MoodAnalysisException extends Exception
 {
     enum ExceptionType
     {
-        EMPTY, NULL, EMPTY_FIELD;
+        EMPTY, NULL;
     }
     ExceptionType type;
 

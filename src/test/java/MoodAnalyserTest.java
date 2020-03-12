@@ -68,12 +68,14 @@ public class MoodAnalyserTest
     {
         try
         {
-            MoodAnalyser moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
-            Assert.assertEquals(new MoodAnalyser(), moodAnalyser);
+            MoodAnalyser mood = new MoodAnalyser();
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser();
+            boolean equal = moodAnalyser.equals(mood);
+            Assert.assertEquals(true, equal);
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            e.getStackTrace();
         }
     }
 }
