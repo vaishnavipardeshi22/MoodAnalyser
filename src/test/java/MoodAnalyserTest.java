@@ -62,4 +62,18 @@ public class MoodAnalyserTest
             Assert.assertEquals(MoodAnalysisException.ExceptionType.EMPTY, e.type);
         }
     }
+
+    @Test
+    public void givenMoodAnalyserClass_WhenProper_ThenReturnObject()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
+            Assert.assertEquals(new MoodAnalyser(), moodAnalyser);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
