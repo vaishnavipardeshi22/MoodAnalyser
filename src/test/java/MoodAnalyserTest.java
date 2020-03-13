@@ -68,14 +68,38 @@ public class MoodAnalyserTest
     {
         try
         {
-            MoodAnalyser mood = new MoodAnalyser();
             MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser();
-            boolean equal = moodAnalyser.equals(mood);
-            Assert.assertEquals(true, equal);
+            Assert.assertEquals(new MoodAnalyser(), moodAnalyser);
         }
         catch (Exception e)
         {
             e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void givenMoodAnalyserClass_WhenClassNotFound_ThenThrowException()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser("I am in Happy Mood");
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.assertEquals("No such class found.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenMoodAnalyserClass_WhenMethodNotFound_ThenThrowException()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser();
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.assertEquals("No such method found.", e.getMessage());
         }
     }
 }

@@ -41,16 +41,14 @@ public class MoodAnalyser<equals, equal>
         }
     }
 
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MoodAnalyser that = (MoodAnalyser) o;
-        return Objects.equals(message, that.message);
-    }
+   public boolean equals(Object another)
+   {
+       if (this.message.equals(((MoodAnalyser)another).message))
+           return true;
+       return false;
+   }
 
-    //MAIN METHOD
+   //MAIN METHOD
     public static void main(String[] args)
     {
         System.out.println("******************** WELCOME TO MOOD ANALYSER ********************");
