@@ -8,7 +8,7 @@ public class MoodAnalyserFactory
     {
         try
         {
-            Class<?> moodAnalyserClass = Class.forName("Moodanlyser");
+            Class<?> moodAnalyserClass = Class.forName("MoodAnalyser");
             Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(String.class);
             return (MoodAnalyser) moodConstructor.newInstance(message);
         }

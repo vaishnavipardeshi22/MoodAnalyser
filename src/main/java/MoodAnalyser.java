@@ -41,12 +41,13 @@ public class MoodAnalyser<equals, equal>
         }
     }
 
-   public boolean equals(Object another)
-   {
-       if (this.message.equals(((MoodAnalyser)another).message))
-           return true;
-       return false;
-   }
+    //EQUALS METHOD TO CHECK TWO OBJECTS ARE EQUAL OR NOT
+    public boolean equals(Object another)
+    {
+        if (this.message.equals(((MoodAnalyser)another).message))
+            return true;
+        return false;
+    }
 
    //MAIN METHOD
     public static void main(String[] args)
