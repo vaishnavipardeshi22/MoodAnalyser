@@ -3,7 +3,6 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory
 {
-    //METHOD TO CHECK CLASS NOT FOUND EXCEPTION
     public static MoodAnalyser createMoodAnalyser(String message) throws MoodAnalysisException
     {
         try
@@ -35,7 +34,6 @@ public class MoodAnalyserFactory
         return null;
     }
 
-    //METHOD TO CHECK METHOD NOT FOUND EXCEPTION
     public static MoodAnalyser createMoodAnalyser() throws MoodAnalysisException
     {
         try
@@ -55,6 +53,27 @@ public class MoodAnalyserFactory
         catch (InstantiationException e)
         {
             e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object invokedMethod(MoodAnalyser moodAnalyser, String analyseMood) throws MoodAnalysisException
+    {
+        try
+        {
+            return moodAnalyser.getClass().getMethod(analyseMood).invoke(moodAnalyser);
+        }
+        catch (NoSuchMethodException e)
+        {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "No such method found.");
         }
         catch (IllegalAccessException e)
         {

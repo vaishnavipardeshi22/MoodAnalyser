@@ -142,4 +142,34 @@ public class MoodAnalyserTest
             Assert.assertEquals("No such method found.", e.getMessage());
         }
     }
+
+    @Test
+    public void givenHappyMessage_WhenProper_ThenReturnHappy()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser("I am in Happy Mood");
+            Object mood=MoodAnalyserFactory.invokedMethod(moodAnalyser,"analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        }
+        catch (MoodAnalysisException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenHappyMessage_WhenImproper_ThenThrowException()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser = MoodAnalyserFactory.createMoodAnalyser("I am in Happy Mood");
+            Object mood = MoodAnalyserFactory.invokedMethod(moodAnalyser,"nalyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        }
+        catch (MoodAnalysisException e)
+        {
+            e.getStackTrace();
+        }
+    }
 }
