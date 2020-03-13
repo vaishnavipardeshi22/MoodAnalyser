@@ -26,7 +26,7 @@ public class MoodAnalyserFactory
         }
         catch (IllegalAccessException e)
         {
-            e.printStackTrace();
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ILLEGAL_ACCESS, "No access available.");
         }
         catch (InvocationTargetException e)
         {
@@ -57,7 +57,7 @@ public class MoodAnalyserFactory
         }
         catch (IllegalAccessException e)
         {
-            e.printStackTrace();
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ILLEGAL_ACCESS, "No access available.");
         }
         catch (InvocationTargetException e)
         {
@@ -78,7 +78,7 @@ public class MoodAnalyserFactory
         }
         catch (IllegalAccessException e)
         {
-            e.printStackTrace();
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ILLEGAL_ACCESS, "No access available.");
         }
         catch (InvocationTargetException e)
         {
