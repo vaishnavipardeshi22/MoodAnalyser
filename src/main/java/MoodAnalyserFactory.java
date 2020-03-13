@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory
@@ -84,5 +85,25 @@ public class MoodAnalyserFactory
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Object setFieldValue(MoodAnalyser moodAnalyser, String message, String i_am_in_happy_mood) throws MoodAnalysisException
+    {
+        Field field;
+        try
+        {
+            field=moodAnalyser.getClass().getDeclaredField(message);
+            field.setAccessible(true);
+            field.set(moodAnalyser,"I am in Happy Mood");
+            return true;
+        }
+        catch (NoSuchFieldException e)
+        {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_FIELD, "No such field found.");
+        }
+        catch (IllegalAccessException e)
+        {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ILLEGAL_ACCESS, "No access available.");
+        }
     }
 }

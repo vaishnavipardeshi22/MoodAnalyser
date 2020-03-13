@@ -131,7 +131,7 @@ public class MoodAnalyserTest
     }
 
     @Test
-    public void givenMoodAnalyserClass_WhenClassNotFound_ThenThrowMethodNotFoundException()
+    public void givenMoodAnalyserClass_WhenMethodNotFound_ThenThrowMethodNotFoundException()
     {
         try
         {
@@ -170,6 +170,22 @@ public class MoodAnalyserTest
         catch (MoodAnalysisException e)
         {
             e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void setHappyMessage_WhenProper_ThenReturnHappy()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser("");
+            MoodAnalyserFactory.setFieldValue(moodAnalyser, "message", "I am in Happy Mood");
+            Object mood=MoodAnalyserFactory.invokedMethod(moodAnalyser,"analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        }
+        catch (MoodAnalysisException e)
+        {
+            e.printStackTrace();
         }
     }
 }
