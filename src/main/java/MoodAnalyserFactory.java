@@ -87,11 +87,13 @@ public class MoodAnalyserFactory
         return null;
     }
 
-    public static Object setFieldValue(MoodAnalyser moodAnalyser, String message, String i_am_in_happy_mood) throws MoodAnalysisException
+    public static Object setFieldValue(MoodAnalyser moodAnalyser, String message, String fieldValue) throws MoodAnalysisException
     {
         Field field;
         try
         {
+            if (fieldValue == null)
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Please enter valid mood.");
             field=moodAnalyser.getClass().getDeclaredField(message);
             field.setAccessible(true);
             field.set(moodAnalyser,"I am in Happy Mood");

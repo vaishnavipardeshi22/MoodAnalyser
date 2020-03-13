@@ -204,4 +204,20 @@ public class MoodAnalyserTest
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void setNullMessage_WhenImproperField_ThenReturnHappy()
+    {
+        try
+        {
+            MoodAnalyser moodAnalyser=MoodAnalyserFactory.createMoodAnalyser("");
+            MoodAnalyserFactory.setFieldValue(moodAnalyser, "message", null);
+            Object mood=MoodAnalyserFactory.invokedMethod(moodAnalyser,"analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        }
+        catch (MoodAnalysisException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
